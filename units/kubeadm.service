@@ -1,0 +1,11 @@
+[Unit]
+Description=Kubeadm service
+Requires=containerd.service
+After=containerd.service
+
+[Service]
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/bin"
+ExecStart=/opt/bin/kubeadm join ${kubeadm_join_args}
+
+[Install]
+WantedBy=multi-user.target        
